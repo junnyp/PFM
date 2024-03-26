@@ -4,12 +4,13 @@ function ExpenseForm({onExpenseAdded}) {
     const [amount, setAmount] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
 
-    const onSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         // Prevent form from refreshing page.
         e.preventDefault();
 
-        const expense = {amount, category, description};
+        const expense = {amount, category, description, date};
 
         try {
             const response = await fetch('http://localhost:8080/api/expenses', {
@@ -20,7 +21,7 @@ function ExpenseForm({onExpenseAdded}) {
                 body: JSON.stringify(expense),
             });
             if (!response.ok) {
-                throw new Error('HTTP error! status: ${response.status}');
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
 
@@ -31,6 +32,7 @@ function ExpenseForm({onExpenseAdded}) {
             setAmount('');
             setCategory('');
             setDescription('');
+            setDate('');
 
         } catch (error) {
             console.error('There was an error adding the expense:', error);
@@ -38,7 +40,7 @@ function ExpenseForm({onExpenseAdded}) {
     };
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>
                     Amount:
@@ -62,6 +64,17 @@ function ExpenseForm({onExpenseAdded}) {
                     <option value = "Gas">Gas</option>
                     <option value = "Other">Other</option>
                 </select>
+            </div>
+            <div>
+                <label>
+                    Date:
+                </label>
+                <input 
+                    type = "date"
+                    value = {date}
+                    onChange = {(e) => setDate(e.target.value)}
+                    required
+                />
             </div>
             <div>
                 <label>
