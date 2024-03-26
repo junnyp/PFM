@@ -1,7 +1,6 @@
-// ExpensePieChart.js
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-// Import Chart and necessary components from chart.js
+// Necessary components from chart.js
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 
 // Register the components
@@ -28,8 +27,6 @@ const ExpensePieChart = ({ expenses }) => {
             ],
             hoverBackgroundColor: [
                 'green',
-
-                // Match hover colors with background colors
             ]
         }]
     };
@@ -37,7 +34,9 @@ const ExpensePieChart = ({ expenses }) => {
     return (
         <div>
             <h2>Expense Distribution by Category</h2>
-            <Pie data={chartData} />
+            <div className = "chart-container">
+                <Pie data={chartData} />
+            </div>
         </div>
     );
 };

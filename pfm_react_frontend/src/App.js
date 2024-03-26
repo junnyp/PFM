@@ -3,6 +3,7 @@ import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
 import Header from './components/Header';
 import ExpensePieChart from './components/Chart'
+import './App.css';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -43,9 +44,9 @@ function App() {
   return (
     <div>
       <Header />
+      <ExpensePieChart expenses={expenses} />
       <ExpenseForm onExpenseAdded = {handleAddExpense} />
       <ExpenseList expenses = {expenses} onDeleteExpense = {handleDeleteExpense}/>
-      <ExpensePieChart expenses={expenses} />
     </div>
   );
 }
