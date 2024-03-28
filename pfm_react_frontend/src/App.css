@@ -1,35 +1,17 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .chart-container {
   width: 100%;
   max-width: 600px;
   margin: auto;
+}
+
+.filter-and-form, .chart-and-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Adjust based on your spacing preference */
+}
+
+/* Optional: Add some styling to ensure components within each row do not stretch */
+.filter-and-form > *, .chart-and-list > * {
+  flex-basis: 48%; /* Adjust the width as needed, ensuring it's less than 50% for spacing */
+  /* Add additional styling here to fit your design needs */
 }
